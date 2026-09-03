@@ -23,6 +23,7 @@ artifacts:
   selector_handoff: "path or unknown"
   investigation_report: "path or unknown"
   proposal_versions: ["path and created date"]
+  proposal_reviews: ["reviewer, model, reviewed version, and findings path"]
   mail_thread: "path or unknown"
   submission_receipt: "path, URL, or unknown"
 evidence:

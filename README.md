@@ -1,13 +1,13 @@
 # OSPP Application Skills
 
-一组面向“开源之夏”（OSPP）项目申请的 Agent Skills。它们的目标不是把申请书写得更像模板，而是将选项目、代码调研、形成可验证方案和导师沟通串成可重复的流程。
+一组面向“开源之夏”（OSPP）项目申请的 Agent Skills。目标是将选项目、代码调研、申请书撰写和导师沟通串成可重复的流程，实现一条龙服务。
 
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-5b5bd6)](https://agentskills.io)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 本项目是社区工具，与开源之夏官方及具体开源社区无隶属关系。项目状态、申请规则和模板应以当年官方页面为准。
 
-当前仓库已完成项目筛选、仓库调研、申请书撰写、导师邮件和申请流程管理五个 skill。
+当前skill拥有项目筛选、仓库调研、申请书撰写、导师邮件和申请流程管理五个 skill。
 
 ## 当前内容
 
@@ -32,6 +32,7 @@ ospp-application-skills/
 │   └── references/
 │       ├── evidence-ledger.md
 │       ├── proposal-checklist.md
+│       ├── review-workflow.md
 │       └── source-policy.md
 ├── ospp-mentor-mail/
 │   ├── SKILL.md
@@ -97,6 +98,19 @@ https://summer.ospp.ac.cn/org/prodetail/xxxxxxxxx?lang=zh&list=pro
 ```
 
 该 skill 支持新建、修改和审查三种使用方式。它不会把静态阅读说成运行验证，也不会把本地改动说成开源贡献。优秀中选申请书仅用于提炼结构和证据标准，不用于复制措辞。
+
+申请书完成后可以选择启用独立模型审阅。审阅默认关闭，不绑定具体厂商：既可以由 Claude Code 负责写作、GPT 负责审阅，也可以由 GPT 写作、Claude Code 通过 MCP 审阅。审阅器只提出有证据的具体问题，主写模型会记录接受和拒绝的建议，避免把申请书改成长篇套话或典型 AI 文风。
+
+```text
+使用 $ospp-proposal-writer 撰写申请书，并启用独立审阅。
+主写使用当前模型，审阅使用 Claude Code MCP 的 Opus 模型，只进行一轮。
+```
+
+不需要外部审阅时可以明确关闭：
+
+```text
+使用 $ospp-proposal-writer 修改这份申请书，不启用外部模型审阅。
+```
 
 ## ospp-mentor-mail
 

@@ -25,6 +25,12 @@ When accepting a handoff, use its project snapshot, requirement mapping, baselin
 
 If code-level evidence is missing, do not silently invent an implementation plan. Produce a clearly marked outline with unresolved items and recommend running `ospp-repo-investigator` first. This skill does not clone repositories or perform code investigation.
 
+## Optional Independent Review
+
+External review is disabled unless the user explicitly enables it or has supplied a standing preference for this application. Natural-language instructions are the interface: for example, “启用独立审阅，由 Claude Code MCP 的 Opus 审一轮” enables it, while “不启用外部审阅” disables it. When enabled, ask for the reviewer only if it cannot be inferred from the user's instruction or an explicitly configured reviewer. The writer and reviewer may be any tools or models the user chooses; when possible, use a different model or provider for the review so it is genuinely independent. In the maintainer's local setup, Claude Code may be invoked through the available Claude review MCP, but this is an example rather than a repository dependency.
+
+Read [review-workflow.md](references/review-workflow.md) before invoking a reviewer. Send only the minimum necessary, sanitized materials. Before transmission, identify the reviewer/provider and disclose any new paid usage and that a third-party service may retain request data under its own terms. Obtain confirmation unless the user already authorized that reviewer and cost for this application. If the reviewer is unavailable, do not pretend that an independent review occurred; finish the normal checklist-based review and report the external review as skipped.
+
 ## Eligibility and Evidence Gate
 
 Recheck the official project page before substantial drafting. If it publicly shows a selected student, warn the user and stop unless they explicitly want to continue for archival or comparative purposes.
@@ -104,6 +110,7 @@ Return or save, as requested:
 - a concise requirement-coverage matrix;
 - unresolved mentor questions kept outside the application unless the user requests otherwise;
 - a fact-check summary listing claims that remain partial, inferred, or blocked.
+- when independent review is enabled, the reviewer identity, findings, accepted and rejected suggestions, and resulting draft version.
 
 Do not overwrite an existing application without preserving or clearly naming the new version. If the user requests PDF output, render it to page images and inspect every page for clipped text, malformed tables, illegible diagrams, and broken links. If rendering is unavailable, deliver the source artifact and explicitly state that PDF appearance is unverified.
 
