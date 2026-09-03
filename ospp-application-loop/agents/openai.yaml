@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSPP Application Loop"
+  short_description: "Track OSPP application progress and next steps"
+  default_prompt: "Use $ospp-application-loop to create or update my OSPP application record, identify the current stage, and tell me the next evidence-backed action."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSPP Mentor Mail"
+  short_description: "Draft concise OSPP mentor emails and replies"
+  default_prompt: "Use $ospp-mentor-mail to draft a concise email or reply to the mentor for this OSPP project."

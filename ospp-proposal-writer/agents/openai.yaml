@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSPP Proposal Writer"
+  short_description: "Draft evidence-backed OSPP project applications"
+  default_prompt: "Use $ospp-proposal-writer to draft or revise my OSPP application from the project requirements and repository investigation."

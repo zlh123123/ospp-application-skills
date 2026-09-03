@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSPP Repo Investigator"
+  short_description: "Map OSPP requirements to repository code and evidence"
+  default_prompt: "Use $ospp-repo-investigator to investigate this selected OSPP project and determine what code must change."

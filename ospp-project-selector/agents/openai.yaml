@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSPP Project Selector"
+  short_description: "Match unselected OSPP projects to a candidate profile"
+  default_prompt: "Use $ospp-project-selector to recommend three currently unselected OSPP projects based on my resume and constraints."

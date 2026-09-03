@@ -1,0 +1,11 @@
+.DS_Store
+.ospp-applications/
+.ospp-workdir/
+*.pdf
+*.docx
+*.doc
+*.pages
+*.key
+*.pem
+*.env
+.env.*
