@@ -2,11 +2,21 @@
 
 ## Official coverage
 
+- The actual current-year official template was inspected before drafting.
+- Its required fields, output format, and filename convention were recorded rather than recalled from memory.
 - The current project title and ID are correct.
 - All current mandatory requirements are addressed.
 - Optional work is visibly separated from required work.
 - The schedule covers the official duration.
 - The requested output format and filename convention are satisfied.
+
+## Excellent-example calibration
+
+- At least one OSPP-recommended excellent application was inspected before drafting.
+- Its structure, technical granularity, repository grounding, feasibility evidence, validation style, and schedule granularity were explicitly extracted.
+- Relevant patterns were adapted to the current project; irrelevant or outdated patterns were rejected rather than copied.
+- No distinctive wording, diagrams, personal details, or project-specific claims were copied from the example.
+- A final comparison against both the official template and the excellent example was completed.
 
 ## Repository grounding
 

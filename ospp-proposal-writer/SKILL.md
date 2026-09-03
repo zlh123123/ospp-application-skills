@@ -19,7 +19,18 @@ Before drafting, obtain enough evidence to identify:
 - the applicant's demonstrated experience and any completed repository validation;
 - material questions that remain unresolved.
 
-Read [source-policy.md](references/source-policy.md) before using templates or example applications. Read [proposal-checklist.md](references/proposal-checklist.md) before finalizing a draft.
+The official template and an OSPP-recommended excellent application are required drafting inputs, not optional inspiration. Read [source-policy.md](references/source-policy.md) and [template-example-calibration.md](references/template-example-calibration.md) before writing any application prose. Read [proposal-checklist.md](references/proposal-checklist.md) before finalizing a draft.
+
+## Mandatory Material Calibration Gate
+
+Do not begin the proposal body until both of these passes are complete:
+
+1. **Official-template pass.** Inspect the current official template itself, extract every required field, output format, filename rule, and stated minimum-content requirement, and record them in a template compliance list. The current-year official template overrides remembered rules, previous-year templates, examples, and user drafts. Do not rename, merge, or omit a mandatory field merely because another structure reads better.
+2. **Excellent-example pass.** Inspect at least one OSPP-recommended excellent application and record only its reusable writing decisions: document organization, technical-detail level, repository grounding, feasibility evidence, implementation specificity, validation style, and schedule granularity. Do not copy its sentences, diagrams, personal details, project-specific claims, or outdated tool choices.
+
+Use the supplied `项目申请模板.pdf` and `项目申请书示例.pdf` as the baseline pair when they are available. Their extracted calibration is recorded in [template-example-calibration.md](references/template-example-calibration.md), but the agent must still inspect the actual files when accessible and must replace the template constraints with a newer official template when the application year provides one.
+
+If either required source is unavailable, do not silently claim full compliance. The agent may produce a clearly labelled preliminary outline, but must state which calibration pass is missing; it must not present that outline as a submission-ready application.
 
 When accepting a handoff, use its project snapshot, requirement mapping, baseline evidence, proposal-safe claims, contradictions, and material mentor questions. Do not convert `partial`, `inferred`, or `blocked` items into facts.
 
@@ -48,7 +59,7 @@ Never upgrade:
 
 ## Structure
 
-Follow the current official template when the user provides one. The OSPP 2026 official minimum is project name, a detailed technical plan, and a detailed development schedule. Add only sections that improve the mentor's ability to judge feasibility.
+Follow the current official template exactly for required fields and submission form. The OSPP 2026 official minimum is project name, a detailed technical plan, and a detailed development schedule. Add only sections that improve the mentor's ability to judge feasibility, and keep all additions subordinate to the official fields.
 
 A strong default structure is:
 
@@ -110,6 +121,7 @@ Return or save, as requested:
 - a concise requirement-coverage matrix;
 - unresolved mentor questions kept outside the application unless the user requests otherwise;
 - a fact-check summary listing claims that remain partial, inferred, or blocked.
+- a brief material-calibration result confirming that every official template constraint passed and identifying which excellent-example patterns were applied or deliberately not applied.
 - when independent review is enabled, the reviewer identity, findings, accepted and rejected suggestions, and resulting draft version.
 
 Do not overwrite an existing application without preserving or clearly naming the new version. If the user requests PDF output, render it to page images and inspect every page for clipped text, malformed tables, illegible diagrams, and broken links. If rendering is unavailable, deliver the source artifact and explicitly state that PDF appearance is unverified.

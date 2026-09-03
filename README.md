@@ -33,7 +33,8 @@ ospp-application-skills/
 │       ├── evidence-ledger.md
 │       ├── proposal-checklist.md
 │       ├── review-workflow.md
-│       └── source-policy.md
+│       ├── source-policy.md
+│       └── template-example-calibration.md
 ├── ospp-mentor-mail/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
@@ -93,7 +94,9 @@ https://summer.ospp.ac.cn/org/prodetail/xxxxxxxxx?lang=zh&list=pro
 
 ## ospp-proposal-writer
 
-根据当年官方模板、项目要求、仓库调研结果、简历和真实验证记录撰写或修改申请书。它会先建立事实依据，再把每项必做需求映射到现有代码、拟议改动和验证方式。
+根据当年官方模板、项目要求、仓库调研结果、简历和真实验证记录撰写或修改申请书。正式动笔前必须先完成两项材料校准：逐项提取官方模板中的必填内容、格式和文件命名规则；从 OSPP 推荐的优秀申请书中提炼结构、技术粒度、仓库依据、可行性证据和时间规划方式。缺少任一材料时只能生成明确标注的预备稿，不能宣称已经达到提交标准。
+
+仓库当前记录了维护者提供的 `项目申请模板.pdf` 与 `项目申请书示例.pdf` 的提炼结果，但不分发原 PDF。实际使用时仍应提供当年官方模板和优秀示例；新一年的官方模板始终优先于仓库内的既有提炼结果。
 
 ```text
 使用 $ospp-proposal-writer，根据这个项目的官方要求、仓库调研报告和我的简历撰写申请书。
