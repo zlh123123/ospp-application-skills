@@ -1,0 +1,18 @@
+# OSPP 申请流程
+
+五个 skill 的阶段关系与失败后循环。
+
+```mermaid
+flowchart LR
+    selector["项目筛选<br/>project-selector"] --> investigator["仓库调研<br/>repo-investigator"]
+    investigator --> proposal["申请书撰写<br/>proposal-writer"]
+    proposal --> mail["导师沟通<br/>mentor-mail"]
+    mail --> result{"申请结果"}
+    result -->|继续推进| archive["记录结果"]
+    result -->|未中选或更换项目| selector
+
+    loop["流程管理<br/>application-loop"] -. 状态、材料、证据与复盘 .-> selector
+    loop -.-> investigator
+    loop -.-> proposal
+    loop -.-> mail
+```

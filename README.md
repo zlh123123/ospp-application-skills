@@ -40,12 +40,16 @@ ospp-application-skills/
 │   └── references/
 │       ├── mail-style.md
 │       └── reply-workflow.md
-└── ospp-application-loop/
-    ├── SKILL.md
-    ├── agents/openai.yaml
-    └── references/
-        ├── record-schema.md
-        └── transition-rules.md
+├── ospp-application-loop/
+│   ├── SKILL.md
+│   ├── agents/openai.yaml
+│   └── references/
+│       ├── record-schema.md
+│       └── transition-rules.md
+└── figures/
+    ├── ospp-application-workflow.mmd
+    ├── ospp-application-workflow.md
+    └── ospp-application-workflow.png
 ```
 
 `SKILL.md` 是通用的 Agent Skills 入口，Claude Code、Codex 等支持该格式的工具都可以使用。`agents/openai.yaml` 只提供 Codex 的界面元数据，其他工具忽略它即可。公开上传简历或邮件示例前，应删除身份证件号、住址、私人联系方式等不必要信息。
@@ -112,6 +116,50 @@ https://summer.ospp.ac.cn/org/prodetail/xxxxxxxxx?lang=zh&list=pro
 使用 $ospp-proposal-writer 修改这份申请书，不启用外部模型审阅。
 ```
 
+### 配置 Claude Code MCP 审阅器
+
+本项目不自带或强制安装某个审阅器。下面的 `claude-review` MCP 来自开源项目 [ARIS 的 Claude Review MCP](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/tree/main/mcp-servers/claude-review)，适用于“Codex 负责写作、Claude Code 负责审阅”的组合。它通过本地 Python MCP 服务调用已经登录的 Claude Code CLI。
+
+先确认本机可以使用 `python3`、`codex` 和 `claude`，并完成 Claude Code 登录。然后安装 ARIS 的 bridge：
+
+```bash
+git clone https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep.git
+cd Auto-claude-code-research-in-sleep
+
+mkdir -p ~/.codex/mcp-servers/claude-review
+cp mcp-servers/claude-review/server.py ~/.codex/mcp-servers/claude-review/server.py
+codex mcp add claude-review -- python3 ~/.codex/mcp-servers/claude-review/server.py
+```
+
+固定审阅模型是可选的。省略 `CLAUDE_REVIEW_MODEL` 时使用 Claude Code CLI 的默认模型；如果要固定模型，可重新注册：
+
+```bash
+codex mcp remove claude-review
+codex mcp add claude-review \
+  --env CLAUDE_REVIEW_MODEL=claude-opus-5 \
+  -- python3 ~/.codex/mcp-servers/claude-review/server.py
+```
+
+模型名称取决于当前 Claude Code 账号和服务端支持情况；若指定模型不可用，请换成可用模型或省略该环境变量。
+
+验证安装：
+
+```bash
+codex mcp list
+claude -p "Reply with exactly READY" --output-format json --tools ""
+```
+
+ARIS bridge 提供 `review`、`review_reply`、`review_start`、`review_reply_start` 和 `review_status`。短文本可同步审阅；长申请书更适合异步启动后查询状态。bridge 默认不给 reviewer 文件工具，因此有两种安全用法：把经过脱敏的必要内容直接放进审阅请求，或者在确实需要读取本地材料时，仅为该次调用开放 `Read,Grep,Glob`。不要给 reviewer 开放 `Bash`、`Edit` 或 `Write`。
+
+配置完成后，不需要手动指定 MCP 工具名，只要在请求中说明审阅器即可：
+
+```text
+使用 $ospp-proposal-writer 撰写申请书，并启用独立审阅。
+审阅器使用 claude-review MCP，模型使用 Opus，只审一轮。
+```
+
+如果主流程运行在 Claude Code，也可以把 GPT、Gemini 或其他模型配置成 reviewer；`ospp-proposal-writer` 只约定审阅行为和证据边界，不限制具体实现。
+
 ## ospp-mentor-mail
 
 负责导师首次联系、导师回复、未回复跟进和结束沟通。它会优先使用项目调研中的具体事实，只询问公开材料无法回答且会改变技术方案的问题。
@@ -133,13 +181,19 @@ skill 默认只生成草稿，不会自动发送邮件或上传个人材料。
 
 五个 skill 可以独立使用，也可以按如下顺序协作：
 
-```text
-ospp-project-selector
-  -> ospp-repo-investigator
-  -> ospp-proposal-writer
-  -> ospp-mentor-mail
-   ^                              |
-   └------ ospp-application-loop -┘
+```mermaid
+flowchart LR
+    selector["项目筛选<br/>project-selector"] --> investigator["仓库调研<br/>repo-investigator"]
+    investigator --> proposal["申请书撰写<br/>proposal-writer"]
+    proposal --> mail["导师沟通<br/>mentor-mail"]
+    mail --> result{"申请结果"}
+    result -->|继续推进| archive["记录结果"]
+    result -->|未中选或更换项目| selector
+
+    loop["流程管理<br/>application-loop"] -. 状态、材料、证据与复盘 .-> selector
+    loop -.-> investigator
+    loop -.-> proposal
+    loop -.-> mail
 ```
 
 项目调研报告同时为申请书和导师邮件提供证据。`ospp-application-loop` 维护每次申请的项目状态、材料索引、证据与复盘；若申请未中选或项目不合适，它会保留该轮记录，再回到项目筛选开始新一轮。
