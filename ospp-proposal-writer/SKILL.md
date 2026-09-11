@@ -83,9 +83,19 @@ For each mandatory requirement, explain in connected prose:
 - the smallest credible implementation boundary;
 - how the result will be tested or measured.
 
+## Required Content Depth
+
+The detailed technical plan must read as a proposal that a mentor can implement and review, not as an outline or a compressed checklist. For every mandatory requirement, write enough connected prose to cover the repository's current behavior, the concrete change boundary, the main data or control flow, affected interfaces and code locations, compatibility with neighboring features, failure or fallback behavior, and the verification evidence that will be produced. A single sentence or a list of nouns is not sufficient coverage.
+
+Use the following expansion pattern when repository evidence permits it: establish the current path with named files, classes, functions, configuration keys, or test fixtures; explain the proposed behavior step by step; identify what is reused and what is added; describe how hooks, tool calls, persistence, protocols, permissions, or existing tests remain compatible; then define normal, boundary, and failure cases and the corresponding tests or measurements. If a requirement has several independent behaviors, give each behavior its own paragraph or clearly labelled subsection.
+
+Unless the official template specifies another organization, the application must contain a substantive background and repository section, a technology and feasibility section, an implementation section that mirrors all mandatory requirements, and a separate validation or testing section when validation is not already fully explained. Match the draft to the project's scope: broad projects need comprehensive coverage, while focused projects need focused explanations. Do not shorten a broad project merely to make the document look tidy. Before calling a draft submission-ready, compare its breadth and technical specificity with the supplied excellent example; compare mandatory-requirement coverage, the density of concrete flows/data structures/error cases, and the number of named repository locations supporting technical claims. If mandatory requirement details were omitted rather than scoped, expand them.
+
+Do not inflate length with repeated project-page text, generic introductions, empty future-work claims, or invented interfaces. More detail must come from repository evidence, project requirements, candidate evidence, explicit design decisions, concrete scenarios, and reproducible validation steps.
+
 Use external projects, papers, standards, and industrial approaches only when they solve a named requirement. Link the original source and state the reuse boundary and adaptation cost. Do not produce a bibliography of famous tools without explaining their role.
 
-Prefer a scoped, complete plan over an ambitious catalogue. Separate mandatory work from optional extensions. If the published requirements exceed the period, narrow the implementation honestly and identify the point requiring mentor confirmation rather than hiding the mismatch.
+Prefer a scoped, complete plan over an ambitious catalogue. Separate mandatory work from optional extensions, but do not use scope control as a reason to omit the implementation details needed to judge the mandatory work. If the published requirements exceed the period, narrow the implementation honestly and identify the point requiring mentor confirmation rather than hiding the mismatch.
 
 ## Evaluation and Schedule
 

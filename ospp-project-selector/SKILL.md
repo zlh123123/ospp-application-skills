@@ -5,6 +5,8 @@ description: "Screen OSPP projects that do not publicly show a selected student 
 
 # OSPP Project Selector
 
+OSPP 同时存在经典项目和领航模式。经典项目筛选仍由本 skill 负责；当用户请求 `stulist`、领航模式、领航方向或自定义课题，或页面 URL 包含 `/org/stulist`、页面标注“领航模式”时，转交 `ospp-pioneer`，不要把领航方向当作一个缺少需求细节的普通项目。
+
 Recommend a small number of OSPP projects that suit the candidate and do not currently publicly show a selected student. Treat this public signal as a built-in eligibility condition, not a preference the user needs to state. It is not proof that a project remains open or low-competition. The goal is a defensible shortlist, not a prediction of acceptance.
 
 ## Inputs

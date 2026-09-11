@@ -8,6 +8,8 @@ application_id: "stable local slug"
 created_at: "YYYY-MM-DD"
 updated_at: "YYYY-MM-DD"
 status: "discovery | selected | investigating | proposal | mentor_contact | submitted | selected_by_project | rejected | withdrawn | abandoned"
+mode: "classic | pioneer"
+# Backward compatibility: if an older record has no mode field, treat it as classic.
 project:
   id: "official ID"
   title: "official title"
@@ -21,6 +23,8 @@ candidate:
   constraints: ["..."]
 artifacts:
   selector_handoff: "path or unknown"
+  pioneer_direction_record: "path or unknown"
+  pioneer_proposal: "path or unknown"
   investigation_report: "path or unknown"
   proposal_versions: ["path and created date"]
   proposal_reviews: ["reviewer, model, reviewed version, and findings path"]

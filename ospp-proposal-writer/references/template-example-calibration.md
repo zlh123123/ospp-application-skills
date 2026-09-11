@@ -39,6 +39,8 @@ The baseline example supports the following mandatory calibration dimensions:
 | Implementation specificity | Move from current behavior to the intended behavior and describe the change boundary | Length for its own sake or speculative interfaces |
 | Schedule | Assign concrete technical outputs, integration, testing, and documentation to dated stages | The example's old dates or its two-stage split when unsuitable |
 
+The example is also a depth calibration. Its implementation section explains the existing behavior, gives concrete workflow or code-level mechanics, shows representative configuration or API details when they clarify feasibility, and continues through testing and integration. Use that density as a lower bound for explaining a broad project, while removing obsolete project-specific content. A short draft is acceptable only when the project itself is genuinely narrow and every required behavior is still explained.
+
 These lessons are not permission to imitate the example's prose. The new application must be written from the target project's current requirements, repository evidence, applicant evidence, and official schedule.
 
 ## Required Pre-draft Note

@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSPP Pioneer Mode"
+  short_description: "筛选领航方向并收敛为可验证的研究提案"
+  default_prompt: "使用 $ospp-pioneer，结合我的简历和偏好筛选 OSPP 领航方向，并把合适的方向收敛为可与导师讨论的具体课题。"

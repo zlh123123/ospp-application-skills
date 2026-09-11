@@ -26,6 +26,14 @@
 - Build, test, and runtime claims match actual evidence.
 - External references have a concrete reuse role.
 
+## Content depth
+
+- The draft is a complete technical plan rather than a one-page outline.
+- Each mandatory requirement has substantive prose covering current behavior, proposed flow, code or interface boundary, compatibility, failure cases, and verification.
+- Broad requirements are decomposed into independently understandable behaviors instead of being represented by a short noun list.
+- The background, repository basis, technical feasibility, implementation details, validation, and schedule together provide enough context for a mentor to judge execution within the period.
+- Any brevity is caused by an explicit scope decision, not by silently dropping technical details.
+
 ## Feasibility
 
 - Each promised feature has a verification method.

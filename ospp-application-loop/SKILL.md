@@ -5,6 +5,8 @@ description: "Track an OSPP application from project selection through repositor
 
 # OSPP Application Loop
 
+申请记录需要区分 `classic` 和 `pioneer` 两种模式。领航模式没有固定需求清单，必须先经过 `ospp-pioneer` 的方向筛选和课题收敛，再决定是否进入仓库调研、正式申请书和导师沟通。识别依据包括请求中的“领航模式”“领航方向”“自定义课题”，或官方 URL 包含 `/org/stulist`、页面出现“领航模式”标注。
+
 Maintain a durable, human-readable record for each OSPP project application. This skill coordinates the four stage skills; it does not replace their domain work. Read [record-schema.md](references/record-schema.md) when creating or updating a record, and [transition-rules.md](references/transition-rules.md) when deciding what can happen next.
 
 ## Input
@@ -18,6 +20,7 @@ Create one record per project and preserve its history. By default store it at `
 At each request, report the current status first, identify the next permitted stage, and state missing evidence or user decisions. Route work to the relevant skill:
 
 - project discovery or replacement -> `ospp-project-selector`;
+- pioneer direction discovery or open-ended topic definition -> `ospp-pioneer`;
 - repository, branch, baseline, or scope investigation -> `ospp-repo-investigator`;
 - application drafting, revision, or PDF checking -> `ospp-proposal-writer`;
 - mentor first contact, reply, follow-up, or closing -> `ospp-mentor-mail`.

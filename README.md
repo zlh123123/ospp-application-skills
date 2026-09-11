@@ -7,7 +7,7 @@
 
 本项目是社区工具，与开源之夏官方及具体开源社区无隶属关系。项目状态、申请规则和模板应以当年官方页面为准。
 
-当前 skill 拥有项目筛选、仓库调研、申请书撰写、导师邮件和申请流程管理五个功能。
+当前 skill 拥有经典项目筛选、领航模式课题规划、仓库调研、申请书撰写、导师邮件和申请流程管理六个功能。
 
 ## 当前内容
 
@@ -19,6 +19,12 @@ ospp-application-skills/
 │   └── references/
 │       ├── candidate-profile.md
 │       └── handoff-schema.md
+├── ospp-pioneer/
+│   ├── SKILL.md
+│   ├── agents/openai.yaml
+│   └── references/
+│       ├── direction-record.md
+│       └── pioneer-proposal-checklist.md
 ├── ospp-repo-investigator/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
@@ -91,6 +97,17 @@ https://summer.ospp.ac.cn/org/prodetail/xxxxxxxxx?lang=zh&list=pro
 ```
 
 调研结论会区分 `verified`、`partial`、`inferred`、`blocked` 和 `contradicted`，避免把静态代码存在、仓库编译成功或设计推测误写成已经验证的功能。最终输出可以直接交给后续申请书和导师邮件 skill 使用。
+
+## ospp-pioneer
+
+专门处理 OSPP 领航模式。它先从当前领航方向中筛选与候选人匹配的开放方向，再提出多个可证伪的具体课题假设，收敛出一个主课题、最小验证集和 8 周计划，最后形成可与导师讨论的研究提案。
+
+领航模式只有方向描述，不等同于经典项目的固定需求和验收标准。因此这个 skill 不会直接套用普通项目申请书，也不会把学生提出的技术路线写成社区已经确认的任务。确定课题后，可以继续复用 `ospp-repo-investigator`、`ospp-proposal-writer` 和 `ospp-mentor-mail`。
+
+```text
+使用 $ospp-pioneer，结合我的简历和偏好筛选当前 OSPP 领航方向。
+我不想做纯适配，希望方向能收敛成一个有验证方法的研究型课题。
+```
 
 ## ospp-proposal-writer
 
@@ -179,12 +196,18 @@ skill 默认只生成草稿，不会自动发送邮件或上传个人材料。
 
 ## 阶段衔接
 
-五个 skill 可以独立使用，也可以按如下顺序协作：
+六个 skill 可以独立使用，也可以按如下顺序协作：
 
 ```mermaid
 flowchart LR
-    selector["项目筛选<br/>project-selector"] --> investigator["仓库调研<br/>repo-investigator"]
-    investigator --> proposal["申请书撰写<br/>proposal-writer"]
+    mode{"申请模式"}
+    mode -->|经典项目| selector["项目筛选<br/>project-selector"]
+    selector --> investigator["仓库调研<br/>repo-investigator"]
+    investigator --> proposal["正式申请书<br/>proposal-writer"]
+    mode -->|领航模式| pioneer["方向与课题规划<br/>ospp-pioneer"]
+    pioneer --> pioneerDoc["技术提案<br/>供导师讨论"]
+    pioneerDoc -->|需要代码验证| investigator
+    pioneerDoc -->|导师确认后| proposal
     proposal --> mail["导师沟通<br/>mentor-mail"]
     mail --> result{"申请结果"}
     result -->|继续推进| archive["记录结果"]
@@ -196,7 +219,7 @@ flowchart LR
     loop -.-> mail
 ```
 
-项目调研报告同时为申请书和导师邮件提供证据。`ospp-application-loop` 维护每次申请的项目状态、材料索引、证据与复盘；若申请未中选或项目不合适，它会保留该轮记录，再回到项目筛选开始新一轮。
+项目调研报告同时为申请书和导师邮件提供证据。领航模式的技术提案不是正式申请书，需先经过导师确认；确认后可根据实际需要进入仓库调研和正式申请书流程。`ospp-application-loop` 维护每次申请的模式、状态、材料索引、证据与复盘；若申请未中选或项目不合适，它会保留该轮记录，再回到项目筛选开始新一轮。
 
 
 ## 安装
@@ -206,16 +229,16 @@ flowchart LR
 将下面这段话发给支持 Agent Skills 的编程 Agent：
 
 ```text
-请从 https://github.com/zlh123123/ospp-application-skills 安装全部五个 Agent Skills。
+请从 https://github.com/zlh123123/ospp-application-skills 安装全部六个 Agent Skills。
 优先使用当前环境支持的 skill installer；如果没有，就 clone 仓库并把每个完整的 skill 目录
-安装到当前 Agent 的用户级 skills 路径。安装后确认五个 SKILL.md 都能被发现，不要运行任何申请流程。
+安装到当前 Agent 的用户级 skills 路径。安装后确认六个 SKILL.md 都能被发现，不要运行任何申请流程。
 ```
 
-如果只想安装某一个，可以把“全部五个”替换成对应名称，例如 `ospp-proposal-writer`。
+如果只想安装某一个，可以把“全部六个”替换成对应名称，例如 `ospp-proposal-writer`。
 
 ### 给用户
 
-推荐使用通用的 [`skills`](https://skills.sh) 安装器。它会识别仓库中的五个 skill，并让你选择目标 Agent 和安装范围：
+推荐使用通用的 [`skills`](https://skills.sh) 安装器。它会识别仓库中的六个 skill，并让你选择目标 Agent 和安装范围：
 
 ```bash
 npx skills add zlh123123/ospp-application-skills
@@ -245,10 +268,10 @@ Claude Code: ~/.claude/skills/ospp-project-selector/
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -R ospp-project-selector ospp-repo-investigator ospp-proposal-writer ospp-mentor-mail ospp-application-loop ~/.claude/skills/
+cp -R ospp-project-selector ospp-pioneer ospp-repo-investigator ospp-proposal-writer ospp-mentor-mail ospp-application-loop ~/.claude/skills/
 ```
 
-Codex 使用 `~/.codex/skills`。手工复制时必须保留每个目录中的 `SKILL.md` 和 `references/`；`agents/openai.yaml` 仅提供 Codex 界面元数据。安装后重新开启会话，再通过 `$ospp-project-selector`、`$ospp-repo-investigator`、`$ospp-proposal-writer`、`$ospp-mentor-mail` 或 `$ospp-application-loop` 调用。
+Codex 使用 `~/.codex/skills`。手工复制时必须保留每个目录中的 `SKILL.md` 和 `references/`；`agents/openai.yaml` 仅提供 Codex 界面元数据。安装后重新开启会话，再通过 `$ospp-project-selector`、`$ospp-pioneer`、`$ospp-repo-investigator`、`$ospp-proposal-writer`、`$ospp-mentor-mail` 或 `$ospp-application-loop` 调用。
 
 ## 使用示例
 
