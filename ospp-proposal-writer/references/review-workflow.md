@@ -21,6 +21,18 @@ The reviewer must cite the affected section and explain why a change is needed. 
 
 ## Apply the Review
 
+## Required Review Evidence and Verdicts
+
+Supply the official template constraints, the user's presentation preferences, and the actual relevant excerpts of the excellent example (or a source-grounded extraction with page references), alongside the draft and technical evidence. Do not ask the reviewer whether a draft matches an example it has not received. User-provided drafts may calibrate desired breadth and presentation without being labelled successful applications.
+
+Require separate PASS / FAIL / NOT VERIFIED verdicts for: official requirement coverage; technical mechanism depth; repository and reference grounding; example-relative breadth; visual explanation; rendered readability; and applicant-facing prose. Each verdict must identify a section, figure, or supplied source. A quoted test count is not independently verified merely because it appears in the draft. Missing sources require NOT VERIFIED, not approval.
+
+For broad multi-module proposals, check that the overview and key sequence/state diagram required by the writer exist, explain distinct relationships, and agree with the prose. Inspect rendered figures when the reviewer supports images; a text-only reviewer must mark rendered readability NOT VERIFIED and leave that check to an image-capable reviewer or the writer. No blanket submission-ready verdict while a required dimension is FAIL or NOT VERIFIED; distinguish technical content approval from presentation approval.
+
+Check that the proposal explains the positive design and a concrete usage/example path, rather than accumulating disclaimers, class names, and failure conditions. Reject review residue in the applicant-facing body. Review notes remain in a separate artifact; accepted technical corrections belong in the relevant sections.
+
+## Apply Findings
+
 Default to one review round unless the user requests more. Classify each finding as accepted, rejected, or requiring user/mentor confirmation. Apply only findings supported by the official requirements, repository evidence, candidate evidence, or a clear readability defect.
 
 Preserve the applicant's voice and formatting preferences. Do not let the reviewer replace concrete prose with ceremonial language, add facts or experience, broaden the promised scope, or rewrite unaffected sections merely to make the document look polished. When a suggestion is only stylistic preference, keep the existing wording.

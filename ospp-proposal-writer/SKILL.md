@@ -99,6 +99,20 @@ Prefer a scoped, complete plan over an ambitious catalogue. Separate mandatory w
 
 ## Evaluation and Schedule
 
+## Visual and Editorial Completeness
+
+For a multi-module application, include an overview architecture or data-flow diagram and a second diagram for the most important execution sequence or state lifecycle, unless the user requests text only or the official format prohibits diagrams. Choose diagrams that explain actual design decisions; do not add decorative boxes or reproduce the same flow twice. A schedule table does not satisfy this requirement. For a genuinely narrow project, one meaningful diagram can suffice with an explanation in the external review notes.
+
+Plan diagrams before drafting. Mark existing components and proposed components distinctly, label important arrows, and place each figure beside prose explaining its boundary and purpose. Use Mermaid for editable Markdown diagrams with short labels and manageable node counts. Render and inspect diagrams at the intended document width before claiming visual readiness; syntax alone does not establish readability. If rendering is unavailable, retain the diagram source and disclose that visual validation is pending.
+
+Include clickable Markdown links to the verified target repository/branch and technical references actually used, with a short explanation of their role. Include a worked example of the central mechanism when it materially clarifies the design: input, intermediate data or state, output, and expected validation. Label constructed examples and proposed interfaces explicitly. File and class names alone do not demonstrate implementation depth.
+
+Treat the official template's minimum content as content requirements, not mandatory literal headings, unless it explicitly mandates headings or layout. Preserve the user's chosen organization and heading style. Keep mentor questions, reviewer comments, and calibration logs outside the application. Integrate accepted review changes into their relevant paragraphs rather than appending a section such as “Claude 复审后的实施约束”.
+
+Before delivery, read the actual resulting artifact and complete the review dimensions in references/review-workflow.md, even when external review is disabled (label this as self-review). Missing required visual explanations or missing evidence for the comparison cannot be marked PASS.
+
+## Evaluation and Schedule Details
+
 Map every promised feature to a test, benchmark, report, or observable behavior. Use existing repository tests and official datasets when available. When no benchmark exists, propose the smallest reproducible validation set and mark any mentor-provided data or infrastructure as unresolved.
 
 The schedule must cover the full official period and reflect dependencies. Include repository familiarization only when it produces a concrete outcome. Reserve time for integration, tests, documentation, reports, and upstream review. Do not assign multiple high-risk subsystems to the same short interval merely to make the table fit.

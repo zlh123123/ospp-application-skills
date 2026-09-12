@@ -50,6 +50,14 @@
 
 ## Writing and artifact quality
 
+- A broad multi-module proposal contains an overview diagram and a distinct key sequence/state diagram, unless an explicit user or format exception applies; the schedule table is not a substitute.
+- Diagrams distinguish existing and proposed behavior, have explanatory prose, and are readable at document width; unrendered visuals are marked NOT VERIFIED.
+- Verified repository/branch and reused technical references have clickable links explaining their roles.
+- A concrete example explains the central mechanism where useful; examples and proposed interfaces are labelled honestly.
+- Official minimum fields were not mistaken for mandatory literal headings, and user formatting preferences are preserved.
+- Reviewer comments and mentor questions are outside the applicant-facing document.
+- Review records give separate evidence-backed content and visual verdicts, and do not claim to compare unseen examples or verify unprovided evidence.
+
 - The document is direct and project-specific, without ceremonial or promotional filler.
 - Paragraphs carry reasoning; bullets and tables are used only where they improve comparison or scheduling.
 - Links resolve and diagrams add information rather than decoration.
